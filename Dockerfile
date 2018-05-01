@@ -1,7 +1,6 @@
 FROM debian:jessie
 
-ENV PLEX_VERSION 1.9.4.4325-1bf240a65
-#ENV PLEX_CHECKSUM xxxx
+ENV PLEX_VERSION 1.12.3.4973-215c28d86
 
 RUN apt-get update \
 	&& apt-get install -y wget \
@@ -10,8 +9,6 @@ RUN apt-get update \
 	&& dpkg -i /tmp/plexmediaserver.deb \
 	&& rm -f /tmp/plexmediaserver.deb \
 	&& rm -rf /var/lib/apt/lists/*
-
-#	&& echo "${PLEX_CHECKSUM} /tmp/plexmediaserver.deb" | sha512sum -c \
 
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY plex /usr/local/bin/
