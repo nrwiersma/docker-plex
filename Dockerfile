@@ -2,7 +2,6 @@ FROM debian:jessie
 
 ENV PLEX_VERSION 1.18.9.2578-513b381af
 
-
 RUN apt-get update \
 	&& apt-get install -y wget \
 	&& wget -O /tmp/plexmediaserver.deb \
@@ -10,6 +9,9 @@ RUN apt-get update \
 	&& dpkg -i /tmp/plexmediaserver.deb \
 	&& rm -f /tmp/plexmediaserver.deb \
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN useradd -U -d /config -s /bin/false plex && \
+    usermod -G users plex
 
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY plex /usr/local/bin/
