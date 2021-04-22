@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-ENV PLEX_VERSION 1.20.3.3437-f1f08d65b
+ENV PLEX_VERSION 1.22.3.4392-d7c624def
 
 RUN apt-get update \
 	&& apt-get install -y wget \
